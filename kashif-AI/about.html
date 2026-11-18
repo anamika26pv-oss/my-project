@@ -1,0 +1,1497 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | AI Technology</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .ai-about {
+            --bg: #050509;
+            --card: #ff3b1d;
+            --text: #ffffff;
+            --muted: #a5a5b2;
+
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow: hidden;
+        }
+
+        .ai-about a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .ai-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 35px;
+        }
+
+
+        .ai-about-hero {
+            position: relative;
+            min-height: 270px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            background: linear-gradient(180deg, rgb(80 74 74 / 55%), rgb(0 0 0)), url(https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1800) center 45% / cover no-repeat;
+        }
+
+        .ai-about-hero::before {
+            content: "";
+            position: absolute;
+            width: 450px;
+            height: 450px;
+            background: #f41007;
+            filter: blur(170px);
+            opacity: .2;
+            top: -250px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .ai-hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 45px 15px;
+        }
+
+        .ai-hero-content h1 {
+            font-size: clamp(38px, 6vw, 64px);
+            font-weight: 800;
+            letter-spacing: -2px;
+            margin-bottom: 15px;
+
+            opacity: 0;
+            transform: translateY(35px);
+            animation: aiHeroReveal 1.2s ease forwards;
+        }
+
+        .ai-hero-content h1 span {
+            color: #f41007;
+        }
+
+        .ai-breadcrumb {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            font-size: 12px;
+            color: #c4c4d0;
+
+            opacity: 0;
+            animation: aiFadeIn 1s ease .5s forwards;
+        }
+
+        .ai-breadcrumb i {
+            font-size: 9px;
+            color: #f41007;
+        }
+
+        .ai-breadcrumb .active {
+            color: #fff;
+        }
+
+        .ai-about-main {
+            padding: 85px 0 65px;
+            position: relative;
+        }
+
+        .ai-about-main::before {
+            content: "";
+            position: absolute;
+            top: 100px;
+            left: -200px;
+            width: 350px;
+            height: 350px;
+            background: #7227d7;
+            filter: blur(180px);
+            opacity: .12;
+            pointer-events: none;
+        }
+
+        .ai-about-grid {
+            display: grid;
+            grid-template-columns: 1.05fr .95fr;
+            gap: 65px;
+            align-items: center;
+        }
+
+        .ai-about-image {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            min-height: 370px;
+        }
+
+        .ai-about-image img {
+            width: 100%;
+            height: 390px;
+            object-fit: cover;
+            display: block;
+            transition: transform .8s ease;
+        }
+
+        .ai-about-image:hover img {
+            transform: scale(1.06);
+        }
+
+        .ai-image-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(0deg, rgb(4 2 1), transparent 55%);
+        }
+
+        .ai-about-content .ai-eyebrow {
+            font-size: 12px;
+            color: #f41007;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        .ai-about-content h2 {
+            font-size: clamp(28px, 3vw, 39px);
+            line-height: 1.2;
+            letter-spacing: -1.5px;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .ai-about-content h2 span {
+            color: #f41007;
+        }
+
+        .ai-about-content p {
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.9;
+            margin-bottom: 14px;
+        }
+
+        .ai-about-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 13px 23px;
+            margin-top: 12px;
+            border-radius: 50px;
+            background: #f41007;
+            color: white;
+            font-size: 12px;
+            font-weight: 700;
+            transition: .3s ease;
+        }
+
+        .ai-about-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(247, 104, 85, 0.35);
+        }
+
+        .ai-about-btn i {
+            font-size: 11px;
+            transition: transform .3s;
+        }
+
+        .ai-about-btn:hover i {
+            transform: translateX(5px);
+        }
+
+        .ai-skills-section {
+            padding: 20px 0 90px;
+        }
+
+        .ai-skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .ai-section-heading {
+            margin-bottom: 30px;
+        }
+
+        .ai-section-heading span {
+            font-size: 11px;
+            color: #f41007;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .ai-section-heading h2 {
+            font-size: 27px;
+            margin-top: 10px;
+            font-weight: 800;
+        }
+
+        .ai-skill {
+            margin-bottom: 24px;
+        }
+
+        .ai-skill-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .ai-skill-track {
+            width: 100%;
+            height: 5px;
+            background: #2e2323;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .ai-skill-fill {
+            width: 0;
+            height: 100%;
+            display: block;
+            border-radius: 20px;
+            background: linear-gradient(90deg, #f41007, #ff9d96);
+            transition: width 1.8s cubic-bezier(.22, 1, .36, 1);
+        }
+
+        .ai-cta {
+            position: relative;
+            min-height: 280px;
+            margin: 0 0 70px;
+            border-radius: 12px;
+            overflow: hidden;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+
+            background:
+                linear-gradient(90deg,
+                    rgba(5, 5, 12, .85),
+                    rgba(5, 5, 12, .55)),
+                url("https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=1800") center 45% / cover no-repeat;
+        }
+
+        .ai-cta::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(0deg, rgb(35 8 4), transparent);
+        }
+
+        .ai-cta-content {
+            position: relative;
+            z-index: 2;
+            padding: 35px 20px;
+        }
+
+        .ai-cta-content span {
+            color: #f41007;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+
+        .ai-cta-content h2 {
+            font-size: clamp(25px, 4vw, 38px);
+            line-height: 1.25;
+            max-width: 600px;
+            margin: 13px auto 20px;
+            font-weight: 800;
+        }
+
+        .ai-cta-content h2 strong {
+            color: #f41007;
+        }
+
+        .ai-cta-content p {
+            color: #d0ccd8;
+            font-size: 12px;
+            margin-bottom: 20px;
+        }
+
+        .ai-reveal {
+            opacity: 0;
+            transform: translateY(45px);
+            transition:
+                opacity 1s ease,
+                transform 1s cubic-bezier(.22, 1, .36, 1);
+        }
+
+        .ai-reveal.ai-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .ai-reveal-left {
+            opacity: 0;
+            transform: translateX(-55px);
+            transition: all 1s cubic-bezier(.22, 1, .36, 1);
+        }
+
+        .ai-reveal-left.ai-visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .ai-reveal-right {
+            opacity: 0;
+            transform: translateX(55px);
+            transition: all 1s cubic-bezier(.22, 1, .36, 1);
+        }
+
+        .ai-reveal-right.ai-visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .ai-delay-1 {
+            transition-delay: .15s;
+        }
+
+        .ai-delay-2 {
+            transition-delay: .3s;
+        }
+
+        .ai-delay-3 {
+            transition-delay: .45s;
+        }
+
+
+        @media(max-width: 480px) {
+
+            .ai-container {
+                padding: 0 17px;
+            }
+
+            .ai-about-hero {
+                min-height: 195px;
+            }
+
+            .ai-hero-content h1 {
+                font-size: 37px;
+            }
+
+            .ai-about-main {
+                padding-top: 40px;
+            }
+
+            .ai-about-image img {
+                height: 260px;
+            }
+
+            .ai-about-content h2 {
+                font-size: 29px;
+            }
+
+            .ai-about-content p {
+                font-size: 12px;
+            }
+
+            .ai-section-heading h2 {
+                font-size: 24px;
+            }
+
+            .ai-cta-content h2 {
+                font-size: 27px;
+            }
+
+        }
+
+        @media(prefers-reduced-motion: reduce) {
+
+            .ai-about *,
+            .ai-about *::before,
+            .ai-about *::after {
+                animation: none !important;
+                transition: none !important;
+                scroll-behavior: auto !important;
+            }
+
+            .ai-reveal,
+            .ai-reveal-left,
+            .ai-reveal-right {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+
+        }
+
+        @keyframes aiHeroReveal {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes aiFadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .ai-skills-section {
+            position: relative;
+            padding: 35px 0 90px;
+            background: #050509;
+            overflow: hidden;
+        }
+
+        .ai-skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 65px;
+            align-items: center;
+        }
+
+        .ai-skills-content {
+            width: 100%;
+        }
+
+        .ai-section-heading {
+            margin-bottom: 32px;
+        }
+
+        .ai-section-heading>span {
+            display: inline-block;
+            font-size: 11px;
+            color: #f41007;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .ai-section-heading h2 {
+            font-size: 30px;
+            color: #fff;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .ai-skill {
+            margin-bottom: 27px;
+        }
+
+        .ai-skill:last-child {
+            margin-bottom: 0;
+        }
+
+        .ai-skill-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 11px;
+            gap: 10px;
+        }
+
+        .ai-skill-info span:first-child {
+            font-size: 12px;
+            color: #e5e2ed;
+            font-weight: 600;
+        }
+
+        .ai-skill-info span:last-child {
+            font-size: 12px;
+            color: #f41007;
+            font-weight: 700;
+        }
+
+        .ai-skill-fill {
+            display: block;
+            width: 0;
+            height: 100%;
+            border-radius: 20px;
+            background: linear-gradient(90deg, #b50f00, #f41007, #ffa99f);
+            box-shadow: 0 0 12px rgb(227 37 19);
+            transition: width 1.8s cubic-bezier(.22, 1, .36, 1);
+        }
+
+        .vision-mission {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            width: 100%;
+        }
+
+        .vision,
+        .mission {
+            position: relative;
+            padding: 27px 28px;
+            background: linear-gradient(145deg, #2c0400, #000000);
+            border: 1px solid rgb(255 94 77);
+            border-radius: 12px;
+            overflow: hidden;
+
+            transition:
+                transform .4s ease,
+                border-color .4s ease,
+                box-shadow .4s ease;
+        }
+
+        .vision::before,
+        .mission::before {
+            content: "";
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            top: -100px;
+            right: -50px;
+
+            background: #f41007;
+            filter: blur(80px);
+            opacity: .25;
+
+            pointer-events: none;
+            transition: opacity .4s ease;
+        }
+
+        .vision:hover,
+        .mission:hover {
+            transform: translateY(-5px);
+            border-color: rgba(252, 132, 132, 0.65);
+            box-shadow: 0 12px 30px rgba(123, 45, 210, .13);
+        }
+
+        .vision:hover::before,
+        .mission:hover::before {
+            opacity: .5;
+        }
+
+        .vision-section,
+        .mission-section {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 17px;
+        }
+
+        .vision-section::before,
+        .mission-section::before {
+            content: "";
+            width: 4px;
+            height: 23px;
+            flex-shrink: 0;
+            border-radius: 5px;
+            background: linear-gradient(100deg, #f41007, #ff9d96);
+
+            box-shadow: 0 0 12px rgba(247, 112, 85, 0.6);
+        }
+
+
+        .vision-heading,
+        .mission-heading {
+            color: #f41007;
+            font-size: 14px;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+
+        .vision-text {
+            position: relative;
+            display: block;
+            color: #b9b6c5;
+            font-size: 12px;
+            line-height: 1.9;
+            font-weight: 400;
+        }
+
+
+        @media (max-width: 768px) {
+
+            .ai-skills-section {
+                padding: 25px 0 60px;
+            }
+
+            .ai-skills-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .ai-section-heading {
+                margin-bottom: 27px;
+            }
+
+            .ai-section-heading h2 {
+                font-size: 25px;
+            }
+
+            .ai-skill {
+                margin-bottom: 23px;
+            }
+
+            .vision-mission {
+                gap: 16px;
+            }
+
+            .vision,
+            .mission {
+                padding: 23px;
+            }
+
+            .vision-heading,
+            .mission-heading {
+                font-size: 13px;
+            }
+
+            .vision-text {
+                font-size: 12px;
+                line-height: 1.85;
+            }
+
+            .ai-container {
+                padding: 0 22px;
+            }
+
+            .ai-about-hero {
+                min-height: 230px;
+            }
+
+            .ai-hero-content h1 {
+                font-size: 43px;
+            }
+
+            .ai-about-main {
+                padding: 55px 0 45px;
+            }
+
+            .ai-about-grid {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+
+            .ai-about-image {
+                min-height: 280px;
+            }
+
+            .ai-about-image img {
+                height: 300px;
+            }
+
+            .ai-about-content h2 {
+                font-size: 32px;
+            }
+
+            .ai-skills-section {
+                padding: 25px 0 60px;
+            }
+
+            .ai-skills-grid {
+                grid-template-columns: 1fr;
+                gap: 45px;
+            }
+
+            .ai-cta {
+                min-height: 280px;
+                margin-bottom: 40px;
+            }
+        }
+
+
+        .ai-services-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 999999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity .4s ease, visibility .4s ease;
+        }
+
+        .ai-services-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .ai-modal-overlay {
+            position: absolute;
+            inset: 0;
+            background: #000;
+            backdrop-filter: blur(9px);
+        }
+
+        .ai-modal-content {
+            font-family: 'Inter', sans-serif;
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 850px;
+            overflow-y: auto;
+            padding: 45px;
+            border-radius: 18px;
+            background: linear-gradient(145deg,
+                    #000,
+                    #100808);
+            border: 1px solid rgba(247, 93, 85, 0.35);
+            box-shadow:
+                0 0 40px rgba(234, 51, 51, 0.15),
+                0 25px 80px rgba(0, 0, 0, 0.6);
+            transform: translateY(35px) scale(.97);
+            transition: transform .45s cubic-bezier(.22, 1, .36, 1);
+        }
+
+        .ai-services-modal.active .ai-modal-content {
+            transform: translateY(0) scale(1);
+        }
+
+        .ai-modal-close {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: none;
+            background: none;
+            color: #fff;
+            font-size: 17px;
+            cursor: pointer;
+            transition: all .3s ease;
+        }
+
+        .ai-modal-close:hover {
+            transform: rotate(90deg);
+            color: #f41007;
+        }
+
+        .ai-modal-heading {
+            text-align: center;
+            margin-bottom: 32px;
+            color: #fff;
+        }
+
+        .ai-modal-heading p {
+            color: #a5a5b2;
+            font-size: 12px;
+            line-height: 1.8;
+            max-width: 480px;
+            margin: auto;
+        }
+
+
+        .ai-modal-services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+
+        .ai-modal-service-card {
+            position: relative;
+            padding: 22px 18px;
+            background: rgba(255, 255, 255, .025);
+            border: 1px solid rgba(247, 85, 85, 0.15);
+            border-radius: 12px;
+
+            overflow: hidden;
+            transition: all .35s ease;
+        }
+
+        .ai-modal-service-card:hover {
+            background: rgba(234, 51, 51, 0.09);
+            border-color: rgba(252, 132, 132, 0.6);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(234, 51, 51, 0.12);
+        }
+
+        /* Card Icon */
+
+        .ai-modal-icon {
+            width: 43px;
+            height: 43px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: rgba(247, 85, 85, 0.12);
+            border: 1px solid rgba(252, 132, 132, 0.25);
+            border-radius: 10px;
+
+            color: #f41007;
+            font-size: 19px;
+            margin-bottom: 17px;
+
+            transition: all .3s ease;
+        }
+
+        .ai-modal-service-card:hover .ai-modal-icon {
+            background: #f94c38;
+            color: #fff;
+            box-shadow: 0 0 20px rgba(247, 85, 85, 0.4);
+        }
+
+        .ai-modal-service-card h3 {
+            font-size: 13px;
+            color: #fff;
+            font-weight: 700;
+            margin-bottom: 9px;
+        }
+
+        .ai-modal-service-card p {
+            color: #aaa7b7;
+            font-size: 11px;
+            line-height: 1.8;
+        }
+
+        /* Modal Footer */
+
+        .ai-modal-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+
+            margin-top: 28px;
+            padding-top: 22px;
+            border-top: 1px solid rgba(255, 255, 255, .1);
+        }
+
+        .ai-modal-footer>span {
+            color: #bdb8c9;
+            font-size: 12px;
+        }
+
+        .ai-modal-contact {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 11px 20px;
+            border-radius: 30px;
+            background: #f41007;
+            color: #fff !important;
+            font-size: 11px;
+            font-weight: 700;
+            text-decoration: none;
+
+            transition: all .3s ease;
+        }
+
+        .ai-modal-contact:hover {
+            box-shadow: 0 5px 20px rgba(247, 85, 85, 0.4);
+            transform: translateY(-3px);
+        }
+
+
+        .ai-modal-content::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        @media(max-width: 600px) {
+
+            .ai-services-modal {
+                padding: 12px;
+            }
+
+            .ai-modal-content {
+                padding: 35px 20px 22px;
+                max-height: 88vh;
+                border-radius: 14px;
+            }
+
+            .ai-modal-heading {
+                padding: 0 10px;
+                margin-bottom: 25px;
+            }
+
+            .ai-modal-heading h2 {
+                font-size: 26px;
+            }
+
+            .ai-modal-heading p {
+                font-size: 11px;
+            }
+
+            .ai-modal-services-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+
+            .ai-modal-service-card {
+                padding: 17px 13px;
+            }
+
+            .ai-modal-icon {
+                width: 38px;
+                height: 38px;
+                font-size: 16px;
+                margin-bottom: 13px;
+            }
+
+            .ai-modal-service-card h3 {
+                font-size: 12px;
+                line-height: 1.5;
+            }
+
+            .ai-modal-service-card p {
+                font-size: 10px;
+                line-height: 1.7;
+            }
+
+            .ai-modal-footer {
+                flex-direction: column;
+                text-align: center;
+                gap: 13px;
+            }
+
+        }
+
+        @media(max-width: 360px) {
+
+            .ai-modal-services-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="ai-services-modal" id="aiServicesModal" aria-hidden="true">
+
+        <div class="ai-modal-overlay" id="aiModalOverlay"></div>
+
+        <div class="ai-modal-content" role="dialog" aria-modal="true" aria-labelledby="aiModalTitle">
+
+            <!-- Close Button -->
+            <button class="ai-modal-close" id="closeServicesModal" aria-label="Close modal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <!-- Modal Heading -->
+            <div class="ai-modal-heading">
+
+                <h2 id="aiModalTitle">
+                    Explore Our <strong>Services</strong>
+                </h2>
+
+                <p>
+                    Innovative technologies and intelligent solutions
+                    designed to move your business forward.
+                </p>
+
+            </div>
+
+            <!-- Services Grid -->
+            <div class="ai-modal-services-grid">
+
+                <div class="ai-modal-service-card">
+                    <div class="ai-modal-icon">
+                        <i class="fa-solid fa-brain"></i>
+                    </div>
+                    <h3>AI & Automation</h3>
+                    <p>
+                        Smart AI solutions, intelligent agents,
+                        chatbots and workflow automation.
+                    </p>
+                </div>
+
+                <div class="ai-modal-service-card">
+                    <div class="ai-modal-icon">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                    <h3>Software Development</h3>
+                    <p>
+                        Custom software, web applications and
+                        scalable digital platforms.
+                    </p>
+                </div>
+
+                <div class="ai-modal-service-card">
+                    <div class="ai-modal-icon">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </div>
+                    <h3>E-Commerce Solutions</h3>
+                    <p>
+                        Powerful online stores and customised
+                        e-commerce experiences.
+                    </p>
+                </div>
+
+                <div class="ai-modal-service-card">
+                    <div class="ai-modal-icon">
+                        <i class="fa-solid fa-server"></i>
+                    </div>
+                    <h3>IT Infrastructure</h3>
+                    <p>
+                        Reliable IT systems, infrastructure
+                        management and technology support.
+                    </p>
+                </div>
+
+                <div class="ai-modal-service-card">
+                    <div class="ai-modal-icon">
+                        <i class="fa-solid fa-vr-cardboard"></i>
+                    </div>
+                    <h3>VR & AR Solutions</h3>
+                    <p>
+                        Immersive virtual and augmented reality
+                        experiences for modern businesses.
+                    </p>
+                </div>
+
+                <div class="ai-modal-service-card">
+                    <div class="ai-modal-icon">
+                        <i class="fa-solid fa-house-signal"></i>
+                    </div>
+                    <h3>Home Automation</h3>
+                    <p>
+                        Intelligent home systems, smart devices
+                        and connected living solutions.
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="ai-modal-footer">
+                <span>Have a project in mind?</span>
+
+                <a href="mailto:hello@example.com" class="ai-modal-contact">
+                    Let's Talk
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="ai-about">
+
+        <section class="ai-about-hero">
+
+            <div class="ai-hero-content">
+
+                <h1>About <span>Us</span></h1>
+
+                <div class="ai-breadcrumb">
+                    <a href="index.html">Home</a>
+                    <i class="fa-solid fa-chevron-right"></i>
+                    <span class="active">About Us</span>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="ai-about-main">
+
+            <div class="ai-container">
+
+                <div class="ai-about-grid">
+
+                    <div class="ai-about-image ai-reveal-left">
+
+                        <img src="assets/abou.webp" alt="Artificial Intelligence Technology">
+
+                        <div class="ai-image-overlay"></div>
+
+                    </div>
+
+                    <div class="ai-about-content ai-reveal-right">
+
+                        <span class="ai-eyebrow">About Our Company</span>
+
+                        <h2>
+                            We Make Technology
+                            <span>Work For You.</span>
+                        </h2>
+
+                        <p>
+                            A technology-driven company focused on helping organisations modernise operations, improve
+                            customer
+                            experiences and grow through digital innovation.
+                            We are a technology-focused company delivering solutions across Artificial Intelligence,
+                            Software Development,
+                            E-Commerce, Gaming, Immersive Technologies, IT Infrastructure and Customised Business
+                            Systems. We bring
+                            technology, creativity and practical business understanding together to solve real-world
+                            challenges.
+                            From intelligent AI-powered applications to enterprise management platforms and secure
+                            network infrastructure,
+                            our goal is to make technology useful, accessible and scalable for businesses of different
+                            sizes.
+                            We work with clients to understand their objectives, identify operational challenges and
+                            design solutions that fit their
+                            requirements. Our engagement can cover consultation, design, development, implementation,
+                            integration, training
+                            and ongoing support.
+                        </p>
+
+                        <p>
+                            From intelligent AI solutions and software development
+                            to e-commerce platforms and business automation,
+                            we help organisations turn complex challenges
+                            into meaningful opportunities.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= SKILLS & STATS ================= -->
+
+        <section class="ai-skills-section">
+
+            <div class="ai-container">
+
+                <div class="ai-skills-grid">
+
+                    <!-- SKILLS -->
+
+                    <div class="ai-skills-content ai-reveal-left">
+
+                        <div class="ai-section-heading">
+                            <span>Our Expertise</span>
+                            <h2>What We Do Best</h2>
+                        </div>
+
+                        <div class="ai-skill">
+
+                            <div class="ai-skill-info">
+                                <span>AI & Intelligent Automation</span>
+                                <span>95%</span>
+                            </div>
+
+                            <div class="ai-skill-track">
+                                <span class="ai-skill-fill" data-progress="95"></span>
+                            </div>
+
+                        </div>
+
+                        <div class="ai-skill">
+
+                            <div class="ai-skill-info">
+                                <span>Virtual Reality, AR</span>
+                                <span>90%</span>
+                            </div>
+
+                            <div class="ai-skill-track">
+                                <span class="ai-skill-fill" data-progress="90"></span>
+                            </div>
+
+                        </div>
+
+                        <div class="ai-skill">
+
+                            <div class="ai-skill-info">
+                                <span>E-Commerce & Digital Commerce Solutions</span>
+                                <span>88%</span>
+                            </div>
+
+                            <div class="ai-skill-track">
+                                <span class="ai-skill-fill" data-progress="88"></span>
+                            </div>
+
+                        </div>
+
+                        <div class="ai-skill">
+
+                            <div class="ai-skill-info">
+                                <span>Gaming & Interactive Solutions</span>
+                                <span>92%</span>
+                            </div>
+
+                            <div class="ai-skill-track">
+                                <span class="ai-skill-fill" data-progress="92"></span>
+                            </div>
+
+                        </div>
+
+                        <a href="javascript:void(0)" class="ai-about-btn" id="openServicesModal">
+                            Explore More Services
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+
+
+                    <!-- STATISTICS -->
+
+                    <div class="vision-mission">
+
+                        <div class="vision">
+                            <div class="vision-section">
+                                <span class="vision-heading">OUR VISION</span>
+                            </div>
+
+                            <span class="vision-text">To become a trusted technology partner recognised for innovation,
+                                quality and excellence in delivering intelligent
+                                digital solutions across industries.</span>
+                        </div>
+
+                        <div class="mission">
+                            <div class="mission-section">
+                                <span class="mission-heading">OUR MISSION</span>
+                            </div>
+                            <span class="vision-text">To empower businesses through innovative technologies, customised
+                                solutions and intelligent automation, enabling
+                                organisations to operate efficiently, grow sustainably and embrace digital
+                                transformation.</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= CTA BANNER ================= -->
+
+        <section class="ai-container" id="ai-contact">
+
+            <div class="ai-cta ai-reveal">
+
+                <div class="ai-cta-content">
+
+                    <span>LET'S BUILD THE FUTURE</span>
+
+                    <h2>
+                        We Are Always Ready To
+                        <strong>Transform Your Ideas.</strong>
+                    </h2>
+
+                    <p>
+                        Have a business challenge? Let's create something intelligent together.
+                    </p>
+
+                    <a href="mailto:hello@example.com" class="ai-about-btn">
+                        Get Started
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const aboutSection = document.querySelector(".ai-about");
+
+            /* ================= SCROLL REVEAL ================= */
+
+            const revealElements = aboutSection.querySelectorAll(
+                ".ai-reveal, .ai-reveal-left, .ai-reveal-right"
+            );
+
+            const revealObserver = new IntersectionObserver(function (entries) {
+
+                entries.forEach(function (entry) {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.classList.add("ai-visible");
+
+                        revealObserver.unobserve(entry.target);
+
+                    }
+
+                });
+
+            }, {
+                threshold: 0.15
+            });
+
+            revealElements.forEach(function (element) {
+                revealObserver.observe(element);
+            });
+
+
+            /* ================= SKILL BAR ANIMATION ================= */
+
+            const skillSection = aboutSection.querySelector(".ai-skills-section");
+
+            const skillObserver = new IntersectionObserver(function (entries) {
+
+                entries.forEach(function (entry) {
+
+                    if (entry.isIntersecting) {
+
+                        const skillBars = skillSection.querySelectorAll(".ai-skill-fill");
+
+                        skillBars.forEach(function (bar) {
+
+                            const progress = bar.getAttribute("data-progress");
+
+                            bar.style.width = progress + "%";
+
+                        });
+
+                        skillObserver.unobserve(skillSection);
+
+                    }
+
+                });
+
+            }, {
+                threshold: 0.25
+            });
+
+            skillObserver.observe(skillSection);
+
+
+            /* ================= NUMBER COUNTER ANIMATION ================= */
+
+
+            const counterObserver = new IntersectionObserver(function (entries) {
+
+                entries.forEach(function (entry) {
+
+                    if (entry.isIntersecting) {
+
+                        const counter = entry.target;
+                        const target = Number(counter.getAttribute("data-target"));
+
+                        const duration = 2000;
+                        const startTime = performance.now();
+
+                        function updateCounter(currentTime) {
+
+                            const elapsed = currentTime - startTime;
+                            const progress = Math.min(elapsed / duration, 1);
+
+                            // Smooth ease-out animation
+                            const ease = 1 - Math.pow(1 - progress, 4);
+
+                            const currentValue = Math.floor(target * ease);
+
+                            counter.textContent = currentValue.toLocaleString("en-IN");
+
+                            if (progress < 1) {
+                                requestAnimationFrame(updateCounter);
+                            } else {
+                                counter.textContent = target.toLocaleString("en-IN");
+                            }
+
+                        }
+
+                        requestAnimationFrame(updateCounter);
+
+                        counterObserver.unobserve(counter);
+
+                    }
+
+                });
+
+            }, {
+                threshold: 0.5
+            });
+
+            counters.forEach(function (counter) {
+                counterObserver.observe(counter);
+            });
+
+        });
+
+        /* ================= SERVICES MODAL JS ================= */
+
+        const servicesModal = document.getElementById("aiServicesModal");
+        const openServicesBtn = document.getElementById("openServicesModal");
+        const closeServicesBtn = document.getElementById("closeServicesModal");
+        const modalOverlay = document.getElementById("aiModalOverlay");
+
+        let previousFocus = null;
+
+        function openServicesModal() {
+
+            previousFocus = document.activeElement;
+
+            servicesModal.classList.add("active");
+            servicesModal.setAttribute("aria-hidden", "false");
+
+            document.body.style.overflow = "hidden";
+
+            closeServicesBtn.focus();
+
+        }
+
+        function closeServicesModal() {
+
+            servicesModal.classList.remove("active");
+            servicesModal.setAttribute("aria-hidden", "true");
+
+            document.body.style.overflow = "";
+
+            if (previousFocus) {
+                previousFocus.focus();
+            }
+
+        }
+
+        openServicesBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+            openServicesModal();
+        });
+
+        closeServicesBtn.addEventListener("click", closeServicesModal);
+
+        modalOverlay.addEventListener("click", closeServicesModal);
+
+        // Close modal using Escape key
+        document.addEventListener("keydown", function (e) {
+
+            if (e.key === "Escape" && servicesModal.classList.contains("active")) {
+                closeServicesModal();
+            }
+
+        });
+        window.addEventListener("load", function () {
+            if ("scrollRestoration" in history) {
+                history.scrollRestoration = "manual";
+            }
+
+            window.scrollTo(0, 0);
+        });
+    </script>
+
+</body>
+
+</html>

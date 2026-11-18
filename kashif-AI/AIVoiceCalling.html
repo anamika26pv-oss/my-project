@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+.voice-ai-page {
+    position: relative;
+    overflow: hidden;
+    background: #080811;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+}
+
+.voice-container {
+    width: 88%;
+    max-width: 1250px;
+    margin: auto;
+    position: relative;
+    z-index: 2;
+}
+
+.voice-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    color: #ff6657;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.voice-eyebrow i {
+    font-size: 15px;
+}
+
+
+.voice-hero {
+    min-height: 680px;
+    display: grid;
+    grid-template-columns: 1.1fr .9fr;
+    align-items: center;
+    gap: 35px;
+    padding: 100px 0;
+    position: relative;
+}
+
+.voice-bg-glow {
+    position: absolute;
+    width: 650px;
+    height: 650px;
+    right: -180px;
+    top: -100px;
+    background: radial-gradient(
+        circle,
+        rgba(174, 32, 60, .24),
+        rgba(74, 22, 85, .12) 45%,
+        transparent 70%
+    );
+    pointer-events: none;
+}
+
+.voice-grid {
+    position: absolute;
+    inset: 0;
+    opacity: .12;
+    background-image:
+        linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);
+    background-size: 55px 55px;
+    mask-image: linear-gradient(to bottom, black, transparent 90%);
+}
+
+.voice-hero-content {
+    position: relative;
+    z-index: 3;
+}
+
+.voice-hero-content h1 {
+    font-size: clamp(36px, 4.5vw, 62px);
+    line-height: 1.18;
+    font-weight: 700;
+    margin: 25px 0;
+    letter-spacing: -1.8px;
+}
+
+.voice-hero-content h1 span {
+    display: block;
+    color: #ff3019;
+    background: linear-gradient(90deg, #ff3019, #ff8c8c);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.voice-hero-content > p {
+    max-width: 580px;
+    color: #b8b7c7;
+    font-size: 14px;
+    line-height: 2;
+}
+
+.voice-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 32px;
+}
+
+.voice-primary-btn,
+.voice-outline-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 15px 24px;
+    border-radius: 7px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    transition: .35s ease;
+}
+
+.voice-primary-btn {
+    background: linear-gradient(100deg, #ff3019, #ff9d96);
+    color: #fff;
+    box-shadow: 0 8px 25px rgba(255, 65, 68, .2);
+}
+
+.voice-primary-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(255, 65, 68, .35);
+    color: #fff;
+}
+
+.voice-outline-btn {
+    color: #fff;
+    border: 1px solid rgba(255,255,255,.2);
+}
+
+.voice-outline-btn:hover {
+    border-color: #ff5548;
+    background: rgba(255, 85, 72, .1);
+    color: #fff;
+}
+
+.voice-trust {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px;
+    margin-top: 35px;
+    color: #aaa9b9;
+    font-size: 11px;
+}
+
+.voice-trust i {
+    color: #ff6457;
+    margin-right: 5px;
+}
+
+/* HERO VISUAL */
+
+.voice-hero-visual {
+    min-height: 470px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.voice-image-glow {
+    position: absolute;
+    width: 360px;
+    height: 360px;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        rgba(255, 49, 80, .22),
+        rgba(130, 44, 130, .13) 45%,
+        transparent 70%
+    );
+    filter: blur(12px);
+    animation: voiceGlow 4s ease-in-out infinite alternate;
+}
+
+.voice-main-circle {
+    width: 265px;
+    height: 265px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 111, 116, .4);
+    background: radial-gradient(circle at 40% 30%, #482033, #17101f 65%, #0c0b15);
+    box-shadow:
+        0 0 50px rgba(255, 55, 88, .15),
+        inset 0 0 40px rgba(255, 80, 100, .12);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    gap: 24px;
+    position: relative;
+    z-index: 2;
+}
+
+.voice-mic-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(135deg, #ff3019, #a52a63);
+    box-shadow: 0 0 35px rgba(255, 70, 85, .45);
+    font-size: 32px;
+    color: white;
+}
+
+.voice-main-circle small {
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: #e9bdc7;
+}
+
+.voice-wave {
+    height: 25px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.voice-wave span {
+    display: block;
+    width: 4px;
+    height: 9px;
+    border-radius: 5px;
+    background: #ff685e;
+    animation: voiceWave 1s ease-in-out infinite alternate;
+}
+
+.voice-wave span:nth-child(3n) {
+    animation-delay: .2s;
+}
+
+.voice-wave span:nth-child(3n + 1) {
+    animation-delay: .4s;
+}
+
+.voice-wave span:nth-child(3n + 2) {
+    animation-delay: .6s;
+}
+
+.voice-orbit {
+    position: absolute;
+    width: 390px;
+    height: 390px;
+    border: 1px solid rgba(255, 94, 112, .2);
+    border-radius: 50%;
+}
+
+.orbit-one {
+    transform: rotateX(65deg) rotate(-20deg);
+    animation: voiceOrbit 12s linear infinite;
+}
+
+.orbit-two {
+    width: 330px;
+    height: 440px;
+    transform: rotateX(65deg) rotate(45deg);
+    border-color: rgb(255 112 112 / 49%);
+    animation: voiceOrbit 15s linear infinite reverse;
+}
+
+.voice-card-top {
+    top: 70px;
+    right: -5px;
+}
+
+.voice-card-bottom {
+    bottom: 75px;
+    left: -15px;
+    animation-delay: 1s;
+}
+
+/* INTRO */
+
+.voice-intro {
+    padding: 85px 0;
+    background: linear-gradient(100deg, #170d1b, #100d18, #1c0d18);
+    border-top: 1px solid rgba(255,255,255,.06);
+    border-bottom: 1px solid rgba(255,255,255,.06);
+    text-align: center;
+}
+
+.voice-intro-content > span {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: #ff7165;
+    font-weight: 600;
+}
+
+.voice-intro h2 {
+    max-width: 750px;
+    margin: 20px auto;
+    font-size: clamp(28px, 3.5vw, 45px);
+    line-height: 1.35;
+}
+
+.voice-intro h2 span,
+.voice-section-heading h2 span {
+    color: #ff6256;
+}
+
+.voice-intro p {
+    max-width: 650px;
+    margin: auto;
+    color: #aaa8b8;
+    font-size: 13px;
+    line-height: 2;
+}
+
+/* FEATURES */
+
+.voice-features {
+    padding: 100px 0;
+    background: #0b0a13;
+}
+
+.voice-section-heading {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 55px;
+}
+
+.voice-section-heading h2 {
+    font-size: clamp(28px, 3.5vw, 43px);
+    margin: 18px 0;
+}
+
+.voice-section-heading p {
+    color: #aaa8b8;
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+.voice-feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.voice-feature-card {
+    min-height: 250px;
+    position: relative;
+    overflow: hidden;
+    padding: 30px;
+    border-radius: 13px;
+    border: 1px solid rgba(255, 104, 112, .14);
+    background: linear-gradient(145deg, #191522, #100e18);
+    transition: .4s ease;
+}
+
+.voice-feature-card::before {
+    content: "";
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    right: -100px;
+    top: -100px;
+    background: rgba(255, 65, 85, .12);
+    filter: blur(40px);
+    transition: .4s;
+}
+
+.voice-feature-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(255, 95, 100, .55);
+    box-shadow: 0 15px 40px rgba(0,0,0,.3);
+}
+
+.voice-feature-card:hover::before {
+    background: rgba(255, 65, 85, .3);
+}
+
+.voice-feature-icon {
+    width: 52px;
+    height: 52px;
+    display: grid;
+    place-items: center;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(255, 80, 75, .2), rgba(163, 48, 112, .15));
+    color: #ff7065;
+    font-size: 21px;
+    margin-bottom: 22px;
+}
+
+.voice-feature-card h3 {
+    font-size: 16px;
+    margin-bottom: 13px;
+    position: relative;
+}
+
+.voice-feature-card p {
+    color: #aaa8b8;
+    font-size: 11px;
+    line-height: 1.9;
+    position: relative;
+}
+
+.voice-feature-number {
+    position: absolute;
+    right: 22px;
+    bottom: 12px;
+    font-size: 38px;
+    font-weight: 700;
+    color: rgba(255,255,255,.035);
+}
+
+/* PROCESS */
+
+.voice-process {
+    padding: 100px 0;
+    background: linear-gradient(120deg, #150e1c, #0d0b15);
+}
+
+.voice-process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    position: relative;
+}
+
+.voice-process-item {
+    text-align: center;
+    padding: 25px 15px;
+    position: relative;
+}
+
+.voice-process-icon {
+    width: 80px;
+    height: 80px;
+    display: grid;
+    place-items: center;
+    margin: 0 auto 22px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 95, 100, .35);
+    background: rgba(255, 70, 80, .08);
+    color: #ff7065;
+    font-size: 26px;
+    transition: .4s;
+}
+
+.voice-process-item:hover .voice-process-icon {
+    background: #ff514c;
+    color: white;
+    box-shadow: 0 0 35px rgba(255, 70, 80, .3);
+    transform: scale(1.08);
+}
+
+.voice-process-item > span {
+    color: #ff6c61;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.voice-process-item h3 {
+    font-size: 17px;
+    margin: 10px 0;
+}
+
+.voice-process-item p {
+    color: #aaa8b8;
+    font-size: 11px;
+    line-height: 1.8;
+}
+
+/* CTA */
+
+.voice-cta {
+    padding: 95px 0;
+    text-align: center;
+    background:
+        radial-gradient(ellipse at center, rgba(145, 35, 73, .3), transparent 65%),
+        #100b16;
+    border-top: 1px solid rgba(255,255,255,.06);
+}
+
+.voice-cta-content {
+    max-width: 750px;
+    margin: auto;
+}
+
+.voice-cta h2 {
+    font-size: clamp(28px, 4vw, 45px);
+    margin: 20px 0;
+}
+
+.voice-cta p {
+    color: #aaa8b8;
+    font-size: 13px;
+    line-height: 1.9;
+    margin-bottom: 30px;
+}
+
+/* ANIMATIONS */
+
+@keyframes voiceWave {
+    from { height: 6px; }
+    to { height: 24px; }
+}
+
+@keyframes voiceGlow {
+    from { transform: scale(.9); opacity: .6; }
+    to { transform: scale(1.12); opacity: 1; }
+}
+
+@keyframes voiceFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+}
+
+@keyframes voiceOrbit {
+    from { rotate: 0deg; }
+    to { rotate: 360deg; }
+}
+
+/* SCROLL REVEAL */
+
+.voice-reveal {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: opacity .8s ease, transform .8s ease;
+}
+
+.voice-reveal.voice-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.voice-feature-card:nth-child(2),
+.voice-process-item:nth-child(2) {
+    transition-delay: .1s;
+}
+
+.voice-feature-card:nth-child(3),
+.voice-process-item:nth-child(3) {
+    transition-delay: .2s;
+}
+
+.voice-feature-card:nth-child(4),
+.voice-process-item:nth-child(4) {
+    transition-delay: .3s;
+}
+
+.voice-feature-card:nth-child(5) {
+    transition-delay: .4s;
+}
+
+.voice-feature-card:nth-child(6) {
+    transition-delay: .5s;
+}
+
+.voice-feature-card:nth-child(7) {
+    transition-delay: .6s;
+}
+
+/* RESPONSIVE */
+
+@media(max-width: 1000px) {
+    .voice-hero {
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+
+    .voice-feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .voice-hero-content h1 {
+        font-size: 43px;
+    }
+}
+
+@media(max-width: 768px) {
+    .voice-container {
+        width: 90%;
+    }
+
+    .voice-hero {
+        grid-template-columns: 1fr;
+        padding: 85px 0 65px;
+        text-align: center;
+    }
+
+    .voice-hero-content h1 {
+        font-size: clamp(34px, 8vw, 48px);
+        letter-spacing: -1px;
+    }
+
+    .voice-hero-content > p {
+        margin: auto;
+    }
+
+    .voice-buttons,
+    .voice-trust {
+        justify-content: center;
+    }
+
+    .voice-hero-visual {
+        min-height: 400px;
+        margin-top: 15px;
+    }
+
+    .voice-main-circle {
+        width: 225px;
+        height: 225px;
+    }
+
+    .voice-orbit {
+        width: 320px;
+        height: 320px;
+    }
+
+    .orbit-two {
+        width: 280px;
+        height: 360px;
+    }
+
+    .voice-card-top {
+        right: 0;
+        top: 30px;
+    }
+
+    .voice-card-bottom {
+        left: 0;
+        bottom: 35px;
+    }
+
+    .voice-intro,
+    .voice-features,
+    .voice-process {
+        padding: 70px 0;
+    }
+
+    .voice-process-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+}
+
+@media(max-width: 480px) {
+    .voice-feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .voice-feature-card {
+        min-height: auto;
+        padding: 25px;
+    }
+
+    .voice-hero-content h1 {
+        font-size: 34px;
+    }
+
+    .voice-hero-visual {
+        min-height: 350px;
+    }
+
+    .voice-main-circle {
+        width: 195px;
+        height: 195px;
+    }
+
+    .voice-mic-icon {
+        width: 65px;
+        height: 65px;
+        font-size: 26px;
+    }
+
+    .voice-orbit {
+        width: 270px;
+        height: 270px;
+    }
+
+    .orbit-two {
+        width: 230px;
+        height: 320px;
+    }
+
+    .voice-card-top {
+        right: -3px;
+    }
+
+    .voice-card-bottom {
+        left: -3px;
+    }
+
+    .voice-process-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .voice-process-item {
+        padding: 15px 8px;
+    }
+
+    .voice-process-icon {
+        width: 65px;
+        height: 65px;
+        font-size: 21px;
+    }
+
+    .voice-buttons {
+        flex-direction: column;
+    }
+
+    .voice-primary-btn,
+    .voice-outline-btn {
+        width: 100%;
+    }
+}
+
+/* ACCESSIBILITY */
+
+@media(prefers-reduced-motion: reduce) {
+    .voice-ai-page *,
+    .voice-ai-page *::before,
+    .voice-ai-page *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+    }
+
+    .voice-reveal {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+    </style>
+</head>
+<body>
+    
+<section class="voice-ai-page" id="ai-voice-agents">
+
+    <!-- BACKGROUND EFFECTS -->
+    <div class="voice-bg-glow"></div>
+    <div class="voice-grid"></div>
+
+    <!-- HERO -->
+    <div class="voice-container">
+
+        <div class="voice-hero">
+
+            <div class="voice-hero-content voice-reveal">
+
+                <span class="voice-eyebrow">
+                    <i class="fa-solid fa-wave-square"></i>
+                    AI VOICE TECHNOLOGY
+                </span>
+
+                <h1>
+                    AI Voice Agents &
+                    <span>Intelligent Calling Solutions</span>
+                </h1>
+
+                <p>
+                    Transform customer conversations with intelligent AI voice agents.
+                    Automate calls, manage enquiries, schedule appointments and deliver
+                    seamless customer experiences through natural voice interactions.
+                </p>
+
+                <div class="voice-buttons">
+                    <a href="#voice-features" class="voice-primary-btn">
+                        Explore Capabilities
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                    <a href="#voice-contact" class="voice-outline-btn">
+                        Talk to Our Experts
+                    </a>
+                </div>
+
+                <div class="voice-trust">
+                    <span><i class="fa-solid fa-check-circle"></i> Smart Conversations</span>
+                    <span><i class="fa-solid fa-check-circle"></i> 24/7 Availability</span>
+                </div>
+
+            </div>
+
+            <!-- HERO VISUAL -->
+            <div class="voice-hero-visual voice-reveal">
+
+                <div class="voice-image-glow"></div>
+
+                <div class="voice-orbit orbit-one"></div>
+                <div class="voice-orbit orbit-two"></div>
+
+                <div class="voice-main-circle">
+                    <div class="voice-mic-icon">
+                        <i class="fa-solid fa-microphone-lines"></i>
+                    </div>
+
+                    <div class="voice-wave">
+                        <span></span><span></span><span></span>
+                        <span></span><span></span><span></span>
+                        <span></span><span></span><span></span>
+                        <span></span><span></span><span></span>
+                    </div>
+
+                    <small>AI VOICE ASSISTANT</small>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- INTRO STRIP -->
+    <div class="voice-intro">
+        <div class="voice-container">
+            <div class="voice-intro-content voice-reveal">
+                <span>THE NEXT GENERATION OF CUSTOMER COMMUNICATION</span>
+                <h2>
+                    Every Call Becomes an
+                    <span>Intelligent Conversation.</span>
+                </h2>
+                <p>
+                    AI-powered voice technology helps businesses handle customer
+                    conversations, reduce repetitive work and connect communication
+                    with everyday business operations.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- FEATURES -->
+    <section class="voice-features" id="voice-features">
+
+        <div class="voice-container">
+
+            <div class="voice-section-heading voice-reveal">
+                <span class="voice-eyebrow">OUR CAPABILITIES</span>
+                <h2>Smarter Calling. <span>Better Experiences.</span></h2>
+                <p>
+                    Intelligent voice solutions designed to simplify communication
+                    and improve customer engagement.
+                </p>
+            </div>
+
+            <div class="voice-feature-grid">
+
+                <div class="voice-feature-card voice-reveal">
+                    <div class="voice-feature-icon">
+                        <i class="fa-solid fa-headset"></i>
+                    </div>
+                    <h3>Inbound AI Receptionist</h3>
+                    <p>
+                        Answer incoming calls, understand customer needs and
+                        provide relevant information through intelligent conversations.
+                    </p>
+                    <span class="voice-feature-number">01</span>
+                </div>
+
+                <div class="voice-feature-card voice-reveal">
+                    <div class="voice-feature-icon">
+                        <i class="fa-solid fa-phone-volume"></i>
+                    </div>
+                    <h3>Outbound AI Calling</h3>
+                    <p>
+                        Automate reminders, follow-ups and customer engagement
+                        calls with natural-sounding AI voice interactions.
+                    </p>
+                    <span class="voice-feature-number">02</span>
+                </div>
+
+                <div class="voice-feature-card voice-reveal">
+                    <div class="voice-feature-icon">
+                        <i class="fa-solid fa-calendar-check"></i>
+                    </div>
+                    <h3>Appointment Automation</h3>
+                    <p>
+                        Handle appointment bookings, confirmations and
+                        rescheduling through connected business workflows.
+                    </p>
+                    <span class="voice-feature-number">03</span>
+                </div>
+
+                <div class="voice-feature-card voice-reveal">
+                    <div class="voice-feature-icon">
+                        <i class="fa-solid fa-user-check"></i>
+                    </div>
+                    <h3>Lead Qualification</h3>
+                    <p>
+                        Capture customer details, qualify potential leads,
+                        verify information and manage enquiries efficiently.
+                    </p>
+                    <span class="voice-feature-number">04</span>
+                </div>
+
+                <div class="voice-feature-card voice-reveal">
+                    <div class="voice-feature-icon">
+                        <i class="fa-solid fa-language"></i>
+                    </div>
+                    <h3>Multilingual Conversations</h3>
+                    <p>
+                        Create multilingual voice experiences using supported
+                        speech recognition and text-to-speech models.
+                    </p>
+                    <span class="voice-feature-number">05</span>
+                </div>
+
+                <div class="voice-feature-card voice-reveal">
+                    <div class="voice-feature-icon">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <h3>Call Analytics & CRM</h3>
+                    <p>
+                        Generate call transcripts, conversation summaries,
+                        analytics and CRM-connected customer records.
+                    </p>
+                    <span class="voice-feature-number">06</span>
+                </div>
+
+                <div class="voice-feature-card voice-reveal">
+                    <div class="voice-feature-icon">
+                        <i class="fa-solid fa-user-tie"></i>
+                    </div>
+                    <h3>Human Agent Escalation</h3>
+                    <p>
+                        Transfer complex or sensitive customer requests
+                        to a human support representative when needed.
+                    </p>
+                    <span class="voice-feature-number">07</span>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="voice-process">
+
+        <div class="voice-container">
+
+            <div class="voice-section-heading voice-reveal">
+                <span class="voice-eyebrow">HOW IT WORKS</span>
+                <h2>From Voice to <span>Action.</span></h2>
+                <p>
+                    A connected process that turns customer conversations
+                    into meaningful business actions.
+                </p>
+            </div>
+
+            <div class="voice-process-grid">
+
+                <div class="voice-process-item voice-reveal">
+                    <div class="voice-process-icon">
+                        <i class="fa-solid fa-microphone"></i>
+                    </div>
+                    <span>01</span>
+                    <h3>Listen</h3>
+                    <p>Capture customer speech through voice recognition technology.</p>
+                </div>
+
+                <div class="voice-process-item voice-reveal">
+                    <div class="voice-process-icon">
+                        <i class="fa-solid fa-brain"></i>
+                    </div>
+                    <span>02</span>
+                    <h3>Understand</h3>
+                    <p>Interpret customer intent and understand the conversation.</p>
+                </div>
+
+                <div class="voice-process-item voice-reveal">
+                    <div class="voice-process-icon">
+                        <i class="fa-solid fa-comments"></i>
+                    </div>
+                    <span>03</span>
+                    <h3>Respond</h3>
+                    <p>Generate natural responses using AI-powered voice technology.</p>
+                </div>
+
+                <div class="voice-process-item voice-reveal">
+                    <div class="voice-process-icon">
+                        <i class="fa-solid fa-gears"></i>
+                    </div>
+                    <span>04</span>
+                    <h3>Take Action</h3>
+                    <p>Connect conversations to bookings, CRM and business systems.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="voice-cta" id="voice-contact">
+        <div class="voice-container">
+            <div class="voice-cta-content voice-reveal">
+                <span class="voice-eyebrow">LET'S BUILD SMARTER COMMUNICATION</span>
+                <h2>Ready to Transform Your Customer Conversations?</h2>
+                <p>
+                    Bring intelligent voice automation into your business
+                    and create more connected customer experiences.
+                </p>
+                <a href="Contact Us.html" class="voice-primary-btn">
+                    Get in Touch
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+</section>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const revealElements = document.querySelectorAll(".voice-reveal");
+
+    const observer = new IntersectionObserver((entries) => {
+
+        entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+                entry.target.classList.add("voice-visible");
+                observer.unobserve(entry.target);
+            }
+
+        });
+
+    }, {
+        threshold: 0.12
+    });
+
+    revealElements.forEach(element => {
+        observer.observe(element);
+    });
+
+});
+</script>
+
+</body>
+</html>
